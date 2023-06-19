@@ -14,7 +14,7 @@ cls
 echo What kind of installation do you want?
 echo.
 echo A) Fast
-echo B) Full with pytorch (will be needed in future for neuronet translators; torch packet ~1Gb will be installed)
+echo B) Full with pytorch (needed for offline FB NLLB translator; torch packet ~1Gb will be installed)
 echo.
 set /p "gpuchoice=Input> "
 set gpuchoice=%gpuchoice:~0,1%
