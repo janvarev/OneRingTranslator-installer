@@ -14,7 +14,7 @@ cls
 echo What kind of installation do you want?
 echo.
 echo A) Fast
-echo B) Full with pytorch (needed for offline FB NLLB translator; torch packet ~1Gb will be installed)
+echo B) Full with pytorch and transformers (needed for local neuronet translators like FB NLLB; ~1Gb space; you can re-run and install it later)
 echo.
 set /p "gpuchoice=Input> "
 set gpuchoice=%gpuchoice:~0,1%
@@ -23,7 +23,7 @@ if /I "%gpuchoice%" == "A" (
     set "PACKAGES_TO_INSTALL=python=3.10.9 git"
     set "CHANNEL=-c conda-forge -c pytorch"
 ) else if /I "%gpuchoice%" == "B" (
-    set "PACKAGES_TO_INSTALL=pytorch torchvision torchaudio cpuonly git"
+    set "PACKAGES_TO_INSTALL=pytorch torchvision torchaudio cpuonly transformers git"
     set "CHANNEL=-c conda-forge -c pytorch"
 ) else (
     echo Invalid choice. Exiting...
