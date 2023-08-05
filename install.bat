@@ -13,8 +13,8 @@ cls
 
 echo What kind of installation do you want?
 echo.
-echo A) Fast
-echo B) Full with pytorch and transformers (needed for local neuronet translators like FB NLLB; ~1Gb space; you can re-run and install it later)
+echo A) Fast (only online translators, no offline and multi_source support)
+echo B) Full (online, offline, multi_source support, BLEU and COMET estimations) (will install torch and unbabel ~1Gb)
 echo.
 set /p "gpuchoice=Input> "
 set gpuchoice=%gpuchoice:~0,1%
@@ -85,6 +85,10 @@ if exist OneRingTranslator\ (
   cd OneRingTranslator || goto end
 )
 call python -m pip install -r requirements.txt --upgrade
+if /I "%gpuchoice%" == "B" (
+  call python -m pip install -r requirements-offline.txt --upgrade
+  call python -m pip install -r requirements-bleu.txt --upgrade
+)
 
 :end
 pause
